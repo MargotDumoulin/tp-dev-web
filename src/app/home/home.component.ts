@@ -39,7 +39,9 @@ export class HomeComponent {
       })
       .afterClosed()
       .subscribe((data) => {
+        if (!data) return; // Means the action was cancelled
         if (music) {
+          // Means the user is updating an existing music
           this.musicsService.update(data).subscribe({
             next: (_res) => {
               this.loading = true;
@@ -47,6 +49,7 @@ export class HomeComponent {
             },
           });
         } else {
+          // Means the user is creating a new music
           this.musicsService.create(data).subscribe({
             next: (_res) => {
               this.loading = true;
