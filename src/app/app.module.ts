@@ -1,3 +1,4 @@
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -25,6 +26,7 @@ import { MatChipsModule } from '@angular/material/chips';
     HomeComponent,
     FormulaireComponent,
     CardMusicComponent,
+    ConfirmationDialogComponent,
   ],
   imports: [
     BrowserModule,
