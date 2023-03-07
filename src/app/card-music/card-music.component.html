@@ -18,7 +18,11 @@
     <p>Date : {{ music.date | date : "dd/MM/yyyy" }}</p>
     <div>
       Styles:
-      <div *ngFor="let style of music.styles">{{ style }}</div>
+      <mat-chip-listbox aria-label="Fish selection">
+        <mat-chip-option *ngFor="let style of music.styles">{{
+          style
+        }}</mat-chip-option>
+      </mat-chip-listbox>
     </div>
   </mat-card-content>
   <mat-card-actions *ngIf="!hideActions">
