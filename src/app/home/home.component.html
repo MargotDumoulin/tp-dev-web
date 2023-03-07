@@ -21,10 +21,47 @@
       </div>
     </div>
     <div class="movies-list-container" *ngIf="!isCardView">
-      <span>list-view</span>
+      <table>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Album</th>
+          <th>Artist</th>
+          <th>Duration</th>
+          <th>Date</th>
+          <th>Style</th>
+          <th>Picture</th>
+          <th>Actions</th>
+        </tr>
+        <tr *ngFor="let music of musics">
+          <td>{{ music.title }}</td>
+          <td>{{ music.description ? music.description : "None" }}</td>
+          <td>{{ music.album }}</td>
+          <td>{{ music.artist }}</td>
+          <td>{{ music.duration }}</td>
+          <td>{{ music.date | date : "dd/MM/yyyy" }}</td>
+          <td>
+            <div *ngFor="let style of music.styles">{{ style }}</div>
+          </td>
+          <td class="home-picture-container">
+            <img mat-card-image [src]="music.picture" alt="{{ music.title }}" />
+          </td>
+          <td>
+            <button mat-button color="primary" (click)="openDialog(music)">
+              Edit
+            </button>
+            <button mat-button color="danger" (click)="deleteMusic(music.id)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </table>
     </div>
     <div class="movies-container" *ngIf="isCardView">
-      <span>card-view</span>
+      <app-card-music
+        [music]="music"
+        *ngFor="let music of musics"
+      ></app-card-music>
     </div>
   </ng-template>
 </div>

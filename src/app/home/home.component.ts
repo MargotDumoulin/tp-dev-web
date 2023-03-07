@@ -1,3 +1,4 @@
+import { FormulaireComponent } from './../formulaire/formulaire.component';
 import { Component } from '@angular/core';
 import { Music, MusicsService } from '../services/musics/musics.service';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
@@ -24,26 +25,45 @@ export class HomeComponent {
 
   fetchMusics() {
     this.musicsService.fetch().subscribe((res) => {
-      console.log({ res });
       this.musics = res || [];
       this.loading = false;
     });
   }
 
-  deleteMusic(id: number) {
+  openDialog(music: Music) {
     this.dialog
-      .open(ConfirmationDialogComponent)
+      .open(FormulaireComponent, {
+        data: {
+          musicModel: music,
+        },
+      })
       .afterClosed()
-      .subscribe((wantsToDelete) => {
-        if (wantsToDelete) {
-          this.musicsService.delete(String(id)).subscribe({
-            next: (_res) => {
-              this.loading = true;
-              this.fetchMusics();
-            },
-          });
-        }
+      .subscribe((musicEdited) => {
+        this.musicsService.update(musicEdited).subscribe({
+          next: (_res) => {
+            this.loading = true;
+            this.fetchMusics();
+          },
+        });
       });
+  }
+
+  deleteMusic(id = -1) {
+    if (id != -1) {
+      this.dialog
+        .open(ConfirmationDialogComponent)
+        .afterClosed()
+        .subscribe((wantsToDelete) => {
+          if (wantsToDelete) {
+            this.musicsService.delete(String(id)).subscribe({
+              next: (_res) => {
+                this.loading = true;
+                this.fetchMusics();
+              },
+            });
+          }
+        });
+    }
   }
 
   reloadMusics() {

@@ -11,8 +11,8 @@ export interface Music {
   artist: string;
   duration: string;
   date: Date;
-  style: string[];
-  picture: string;
+  styles: string[];
+  picture: string | null;
 }
 
 @Injectable({
@@ -81,14 +81,14 @@ export class MusicsService {
     });
   }
 
-  update(id: number, avis: string): Observable<Music> {
+  update(music: Music): Observable<Music> {
     const headers = new HttpHeaders().set(
       'Authorization',
       'Bearer ' + localStorage.getItem('token')
     );
-    return this.http.patch<Music>(
-      this.urlServer.oneMusic.replace(':id', id),
-      { avis: avis },
+    return this.http.put<Music>(
+      this.urlServer.oneMusic.replace(':id', music.id),
+      music,
       { headers }
     );
   }

@@ -4,10 +4,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { MatChipsModule } from '@angular/material/chips';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { AppRoutingModule } from './app-routing.module';
@@ -17,9 +17,15 @@ import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { CardMusicComponent } from './card-music/card-music.component';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, FormulaireComponent, CardMusicComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    FormulaireComponent,
+    CardMusicComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -34,6 +40,7 @@ import { CardMusicComponent } from './card-music/card-music.component';
     MatProgressSpinnerModule,
     MatChipsModule,
     MatDialogModule,
+    ReactiveFormsModule,
     HttpClientModule,
   ],
   providers: [],

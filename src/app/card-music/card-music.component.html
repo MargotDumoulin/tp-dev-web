@@ -1,1 +1,28 @@
-<p>card-music works!</p>
+<mat-card class="card-music-container">
+  <mat-card-header class="watched-header">
+    <mat-card-title
+      ><div>{{ music.title }}</div></mat-card-title
+    >
+  </mat-card-header>
+  <img
+    mat-card-image
+    [src]="music.picture"
+    alt="{{ music.title }}"
+    class="card-music-picture"
+  />
+  <mat-card-content class="watched-avis">
+    <p>Description : {{ music.description }}</p>
+    <p>Album: {{ music.album }}</p>
+    <p>Artist : {{ music.artist }}</p>
+    <p>Duration : {{ music.duration }}</p>
+    <p>Date : {{ music.date | date : "dd/MM/yyyy" }}</p>
+    <div>
+      Styles:
+      <div *ngFor="let style of music.styles">{{ style }}</div>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button color="primary" (click)="openDialog()">Edit</button>
+    <button mat-button color="danger" (click)="delete(music.id)">Delete</button>
+  </mat-card-actions>
+</mat-card>

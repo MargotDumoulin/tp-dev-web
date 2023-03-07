@@ -1,1 +1,216 @@
-<p>formulaire works!</p>
+<mat-card class="mat-whiteframe-2dp formulaire-container">
+  <mat-card-title> <span>Create or edit a title</span> </mat-card-title>
+
+  <mat-card-content>
+    <form novalidate [formGroup]="form">
+      <p
+        [class.errors]="
+          form.get('title')!.invalid &&
+          (form.get('title')!.dirty || form.get('title')!.touched)
+        "
+      >
+        <mat-form-field class="title" [style.width.px]="435">
+          <mat-label>Title</mat-label>
+          <input
+            formControlName="title"
+            name="title"
+            matInput
+            placeholder="Ex: Boulevard of Broken TP Noté"
+            required
+          />
+          <mat-error
+            *ngIf="form.get('title')!.dirty && form.get('title')!.errors?.['required']"
+            ><br />Title is mandatory</mat-error
+          >
+          <mat-error
+            *ngIf="form.get('title')!.dirty && form.get('title')!.errors?.['minlength']"
+            ><br />Must have at least two characters
+          </mat-error>
+        </mat-form-field>
+      </p>
+
+      <div class="form-col">
+        <p
+          [class.errors]="
+            form.get('artist')!.invalid &&
+            (form.get('artist')!.dirty || form.get('artist')!.touched)
+          "
+        >
+          <mat-form-field class="artist">
+            <mat-label>Artist</mat-label>
+            <input
+              formControlName="artist"
+              name="artist"
+              matInput
+              placeholder="Ex: blink-182"
+              required
+            />
+            <mat-error
+              *ngIf="form.get('artist')!.dirty && form.get('artist')!.errors?.['required']"
+              ><br />Artist is mandatory</mat-error
+            >
+            <mat-error
+              *ngIf="form.get('artist')!.dirty && form.get('artist')!.errors?.['minlength']"
+              ><br />Must have at least two characters
+            </mat-error>
+          </mat-form-field>
+        </p>
+
+        <p
+          [class.errors]="
+            form.get('album')!.invalid &&
+            (form.get('album')!.dirty || form.get('album')!.touched)
+          "
+        >
+          <mat-form-field class="album">
+            <mat-label>Album</mat-label>
+            <input
+              formControlName="album"
+              name="album"
+              matInput
+              placeholder="Ex: blink-182"
+              required
+            />
+            <mat-error
+              *ngIf="form.get('album')!.dirty && form.get('album')!.errors?.['required']"
+              ><br />Album is mandatory</mat-error
+            >
+            <mat-error
+              *ngIf="form.get('album')!.dirty && form.get('album')!.errors?.['minlength']"
+              ><br />Must have at least two characters
+            </mat-error>
+          </mat-form-field>
+        </p>
+      </div>
+
+      <!-- TODO: CHECK FORMAT WITH REGEX -->
+      <div class="form-col">
+        <p
+          [class.errors]="
+            form.get('duration')!.invalid &&
+            (form.get('duration')!.dirty || form.get('duration')!.touched)
+          "
+        >
+          <mat-form-field class="duration">
+            <mat-label>Duration</mat-label>
+            <input
+              formControlName="duration"
+              name="duration"
+              matInput
+              placeholder="Ex: 3:29 min"
+              required
+            />
+            <mat-error
+              *ngIf="form.get('duration')!.dirty && form.get('duration')!.errors?.['required']"
+              ><br />Duration is mandatory</mat-error
+            >
+          </mat-form-field>
+        </p>
+
+        <p
+          [class.errors]="
+            form.get('date')!.invalid &&
+            (form.get('date')!.dirty || form.get('date')!.touched)
+          "
+        >
+          <mat-form-field class="date">
+            <mat-label>Date</mat-label>
+            <input
+              formControlName="date"
+              name="date"
+              matInput
+              type="date"
+              required
+            />
+            <mat-error
+              *ngIf="form.get('date')!.dirty && form.get('date')!.errors?.['required']"
+              ><br />Date is mandatory</mat-error
+            >
+          </mat-form-field>
+        </p>
+      </div>
+
+      <p
+        [class.errors]="
+          form.get('description')!.invalid &&
+          (form.get('description')!.dirty || form.get('description')!.touched)
+        "
+      >
+        <mat-form-field class="description">
+          <mat-label>Description</mat-label>
+          <input
+            formControlName="description"
+            name="description"
+            matInput
+            placeholder="Ex: Blabla..."
+          />
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field class="chip-list">
+          <mat-label>Styles :</mat-label>
+          <mat-chip-grid #chipList aria-label="Styles">
+            <mat-chip
+              *ngFor="let style of musicModel.styles"
+              (removed)="removeChipset(style)"
+            >
+              {{ style }}
+              <button matChipRemove>
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip>
+            <input
+              placeholder="Ex: Rock..."
+              [matChipInputFor]="chipList"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              (matChipInputTokenEnd)="addChipset($event)"
+            />
+          </mat-chip-grid>
+        </mat-form-field>
+      </p>
+
+      <input
+        #fileInput
+        type="file"
+        (change)="onFileSelected($event)"
+        name="photo"
+        style="display: none"
+        accept=".png,.jpg"
+      />
+      <div *ngIf="musicModel.picture">
+        <img
+          width="100"
+          src="{{ musicModel.picture }}"
+          alt="Album or single's picture"
+        />
+        <br />
+        <button
+          mat-flat-button
+          color="warn"
+          (click)="musicModel.picture = null"
+        >
+          <mat-icon> cancel </mat-icon>
+        </button>
+      </div>
+      <div class="file-upload" *ngIf="!musicModel.picture">
+        <button type="button" (click)="fileInput.click()" mat-fab>
+          <mat-icon> image </mat-icon>
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions align="end">
+    <button mat-button type="button" (click)="cancel()">Cancel</button>
+    <button
+      mat-button
+      type="submit"
+      color="primary"
+      (click)="submit(form.value)"
+      [disabled]="!form.valid"
+    >
+      Valider
+    </button>
+  </mat-card-actions>
+</mat-card>
