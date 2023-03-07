@@ -46,50 +46,29 @@ export class MusicsService {
   }
 
   fetch(): Observable<Music[]> {
-    const headers = new HttpHeaders().set(
-      'Authorization',
-      'Bearer ' + localStorage.getItem('token')
-    );
-    return this.http.get<Music[]>(this.urlServer.allMusics, { headers });
+    return this.http.get<Music[]>(this.urlServer.allMusics);
+  }
+
+  fetchRandomMusic(): Observable<Music[]> {
+    return this.http.get<Music[]>(this.urlServer.randomMusic);
   }
 
   delete(id: string): Observable<any> {
-    const headers = new HttpHeaders().set(
-      'Authorization',
-      'Bearer ' + localStorage.getItem('token')
-    );
-    return this.http.delete(this.urlServer.oneMusic.replace(':id', id), {
-      headers,
-    });
+    return this.http.delete(this.urlServer.oneMusic.replace(':id', id));
   }
 
   create(music: Music): Observable<Music> {
-    const headers = new HttpHeaders().set(
-      'Authorization',
-      'Bearer ' + localStorage.getItem('token')
-    );
-    return this.http.post<Music>(this.urlServer.allMusics, music, { headers });
+    return this.http.post<Music>(this.urlServer.allMusics, music);
   }
 
   fetchOne(id: string): Observable<Music> {
-    const headers = new HttpHeaders().set(
-      'Authorization',
-      'Bearer ' + localStorage.getItem('token')
-    );
-    return this.http.get<Music>(this.urlServer.oneMusic.replace(':id', id), {
-      headers,
-    });
+    return this.http.get<Music>(this.urlServer.oneMusic.replace(':id', id));
   }
 
   update(music: Music): Observable<Music> {
-    const headers = new HttpHeaders().set(
-      'Authorization',
-      'Bearer ' + localStorage.getItem('token')
-    );
     return this.http.put<Music>(
       this.urlServer.oneMusic.replace(':id', music.id),
-      music,
-      { headers }
+      music
     );
   }
 }

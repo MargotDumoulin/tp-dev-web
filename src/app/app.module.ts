@@ -19,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { CardMusicComponent } from './card-music/card-music.component';
 import { MatChipsModule } from '@angular/material/chips';
+import { RandomTitleComponent } from './random-title/random-title.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { MatChipsModule } from '@angular/material/chips';
     FormulaireComponent,
     CardMusicComponent,
     ConfirmationDialogComponent,
+    RandomTitleComponent,
   ],
   imports: [
     BrowserModule,

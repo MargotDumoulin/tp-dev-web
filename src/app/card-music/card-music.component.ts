@@ -11,11 +11,13 @@ import { Router } from '@angular/router';
 export class CardMusicComponent {
   @Input() music!: Music;
 
+  @Input() hideActions: boolean = false;
+
   @Output() deleteMusicEvent = new EventEmitter<number>();
 
   @Output() updateMusicEvent = new EventEmitter();
 
-  constructor(private dialog: MatDialog, private router: Router) {}
+  constructor() {}
 
   delete(id = -1) {
     if (id != -1) {

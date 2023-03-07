@@ -1,11 +1,7 @@
 <div [ngClass]="['home-container', loading ? 'loading-container' : '']">
   <mat-spinner *ngIf="loading; else notLoading"></mat-spinner>
   <ng-template #notLoading>
-    <div class="home-title-container">
-      <div class="mat-headline-5">Musiques</div>
-      <button mat-button color="primary" (click)="openDialog()">Ajouter</button>
-    </div>
-
+    <div class="mat-headline-5">Musique aléatoire</div>
     <div class="switch-container">
       <div class="home-switch-view">
         <button
@@ -35,9 +31,8 @@
           <th>Date</th>
           <th>Style</th>
           <th>Picture</th>
-          <th>Actions</th>
         </tr>
-        <tr *ngFor="let music of musics">
+        <tr>
           <td>{{ music.title }}</td>
           <td>{{ music.description ? music.description : "None" }}</td>
           <td>{{ music.album }}</td>
@@ -50,24 +45,11 @@
           <td class="home-picture-container">
             <img mat-card-image [src]="music.picture" alt="{{ music.title }}" />
           </td>
-          <td>
-            <button mat-button color="primary" (click)="openDialog(music)">
-              Edit
-            </button>
-            <button mat-button color="danger" (click)="deleteMusic(music.id)">
-              Delete
-            </button>
-          </td>
         </tr>
       </table>
     </div>
     <div class="movies-container" *ngIf="isCardView">
-      <app-card-music
-        [music]="music"
-        *ngFor="let music of musics"
-        (updateMusicEvent)="openDialog(music)"
-        (deleteMusicEvent)="deleteMusic(music.id)"
-      ></app-card-music>
+      <app-card-music [music]="music" [hideActions]="true"></app-card-music>
     </div>
   </ng-template>
 </div>

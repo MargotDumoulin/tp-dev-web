@@ -1,6 +1,12 @@
 <div>
   <div class="toolbar" role="banner">
-    <span class="toolbar-title">TP Noté Angular - DUMOULIN Margot</span>
+    <button class="toolbar-title" mat-button color="white" (click)="goToHome()">
+      Accueil
+    </button>
+    <div class="spacer"></div>
+    <button mat-flat-button color="primary" (click)="goToRandomTitle()">
+      Titre aléatoire
+    </button>
   </div>
 
   <div role="main">

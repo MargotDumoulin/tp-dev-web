@@ -21,7 +21,7 @@
       <div *ngFor="let style of music.styles">{{ style }}</div>
     </div>
   </mat-card-content>
-  <mat-card-actions>
+  <mat-card-actions *ngIf="!hideActions">
     <button mat-button color="primary" (click)="edit(music)">Edit</button>
     <button mat-button color="danger" (click)="delete(music.id)">Delete</button>
   </mat-card-actions>
