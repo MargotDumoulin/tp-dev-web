@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { RandomTitleComponent } from './random-title/random-title.component';
+import { ContactComponent } from './contact/contact.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: 'random',
     component: RandomTitleComponent,
+  },
+  {
+    path: 'contact',
+    component: ContactComponent,
   },
 ];
 

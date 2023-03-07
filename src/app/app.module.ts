@@ -20,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CardMusicComponent } from './card-music/card-music.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { RandomTitleComponent } from './random-title/random-title.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { RandomTitleComponent } from './random-title/random-title.component';
     CardMusicComponent,
     ConfirmationDialogComponent,
     RandomTitleComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
