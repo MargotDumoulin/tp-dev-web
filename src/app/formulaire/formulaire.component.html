@@ -1,5 +1,5 @@
 <mat-card class="mat-whiteframe-2dp formulaire-container">
-  <mat-card-title> <span>Create or edit a title</span> </mat-card-title>
+  <mat-card-title> <span>Créer ou modifier un titre</span> </mat-card-title>
 
   <mat-card-content>
     <form novalidate [formGroup]="form">
@@ -10,7 +10,7 @@
         "
       >
         <mat-form-field class="title" [style.width.px]="435">
-          <mat-label>Title</mat-label>
+          <mat-label>Titre</mat-label>
           <input
             formControlName="title"
             name="title"
@@ -20,11 +20,11 @@
           />
           <mat-error
             *ngIf="form.get('title')!.dirty && form.get('title')!.errors?.['required']"
-            ><br />Title is mandatory</mat-error
+            ><br />Le titre est obligatoire</mat-error
           >
           <mat-error
             *ngIf="form.get('title')!.dirty && form.get('title')!.errors?.['minlength']"
-            ><br />Must have at least two characters
+            ><br />Doit avoir au moins deux charactères
           </mat-error>
         </mat-form-field>
       </p>
@@ -37,7 +37,7 @@
           "
         >
           <mat-form-field class="artist">
-            <mat-label>Artist</mat-label>
+            <mat-label>Artiste</mat-label>
             <input
               formControlName="artist"
               name="artist"
@@ -47,11 +47,11 @@
             />
             <mat-error
               *ngIf="form.get('artist')!.dirty && form.get('artist')!.errors?.['required']"
-              ><br />Artist is mandatory</mat-error
+              ><br />L'artiste est obligatoire</mat-error
             >
             <mat-error
               *ngIf="form.get('artist')!.dirty && form.get('artist')!.errors?.['minlength']"
-              ><br />Must have at least two characters
+              ><br />Doit avoir au moins deux charactères
             </mat-error>
           </mat-form-field>
         </p>
@@ -73,11 +73,11 @@
             />
             <mat-error
               *ngIf="form.get('album')!.dirty && form.get('album')!.errors?.['required']"
-              ><br />Album is mandatory</mat-error
+              ><br />L'album est obligatoire</mat-error
             >
             <mat-error
               *ngIf="form.get('album')!.dirty && form.get('album')!.errors?.['minlength']"
-              ><br />Must have at least two characters
+              ><br />Doit avoir au moins deux charactères
             </mat-error>
           </mat-form-field>
         </p>
@@ -92,7 +92,7 @@
           "
         >
           <mat-form-field class="duration">
-            <mat-label>Duration</mat-label>
+            <mat-label>Durée</mat-label>
             <input
               formControlName="duration"
               name="duration"
@@ -102,7 +102,7 @@
             />
             <mat-error
               *ngIf="form.get('duration')!.dirty && form.get('duration')!.errors?.['required']"
-              ><br />Duration is mandatory</mat-error
+              ><br />La durée est obligatoire</mat-error
             >
           </mat-form-field>
         </p>
@@ -124,7 +124,7 @@
             />
             <mat-error
               *ngIf="form.get('date')!.dirty && form.get('date')!.errors?.['required']"
-              ><br />Date is mandatory</mat-error
+              ><br />La date est obligatoire</mat-error
             >
           </mat-form-field>
         </p>
