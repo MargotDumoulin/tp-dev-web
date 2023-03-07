@@ -61,6 +61,8 @@
       <app-card-music
         [music]="music"
         *ngFor="let music of musics"
+        (updateMusicEvent)="openDialog(music)"
+        (deleteMusicEvent)="deleteMusic(music.id)"
       ></app-card-music>
     </div>
   </ng-template>

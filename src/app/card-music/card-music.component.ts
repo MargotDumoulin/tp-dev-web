@@ -13,7 +13,7 @@ export class CardMusicComponent {
 
   @Output() deleteMusicEvent = new EventEmitter<number>();
 
-  @Output() updatedMusicEvent = new EventEmitter();
+  @Output() updateMusicEvent = new EventEmitter();
 
   constructor(private dialog: MatDialog, private router: Router) {}
 
@@ -23,20 +23,7 @@ export class CardMusicComponent {
     }
   }
 
-  openDialog() {
-    // this.dialog
-    //   .open(AddMusicComponent, {
-    //     data: {
-    //       filmIdFromDB: this.id,
-    //       filmIdFromTMBD: this.idFilmApi,
-    //       title: this.title,
-    //       image: this.img,
-    //       avis: this.avis,
-    //     },
-    //   })
-    //   .afterClosed()
-    //   .subscribe(() => {
-    //     this.updatedFilmEvent.emit();
-    //   });
+  edit(music: Music) {
+    this.updateMusicEvent.emit(music);
   }
 }
