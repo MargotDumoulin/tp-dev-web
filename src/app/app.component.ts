@@ -22,4 +22,8 @@ export class AppComponent {
   goToRandomTitle() {
     this.router.navigate(['/random']);
   }
+
+  goToStats() {
+    this.router.navigate(['/stats']);
+  }
 }

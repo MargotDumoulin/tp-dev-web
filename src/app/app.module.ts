@@ -21,6 +21,8 @@ import { CardMusicComponent } from './card-music/card-music.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { RandomTitleComponent } from './random-title/random-title.component';
 import { ContactComponent } from './contact/contact.component';
+import { NgChartsModule } from 'ng2-charts';
+import { StatisticsComponent } from './statistics/statistics.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { ContactComponent } from './contact/contact.component';
     ConfirmationDialogComponent,
     RandomTitleComponent,
     ContactComponent,
+    StatisticsComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +51,7 @@ import { ContactComponent } from './contact/contact.component';
     MatDialogModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
