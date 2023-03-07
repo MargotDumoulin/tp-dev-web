@@ -1,0 +1,30 @@
+<div [ngClass]="['home-container', loading ? 'loading-container' : '']">
+  <mat-spinner *ngIf="loading; else notLoading"></mat-spinner>
+  <ng-template #notLoading>
+    <div class="mat-headline-5">Musiques</div>
+    <div class="switch-container">
+      <div class="home-switch-view">
+        <button
+          mat-raised-button
+          [ngClass]="{ selected: !isCardView }"
+          (click)="isCardView = false"
+        >
+          Vue liste
+        </button>
+        <button
+          mat-raised-button
+          [ngClass]="{ selected: isCardView }"
+          (click)="isCardView = true"
+        >
+          Vue carte
+        </button>
+      </div>
+    </div>
+    <div class="movies-list-container" *ngIf="!isCardView">
+      <span>list-view</span>
+    </div>
+    <div class="movies-container" *ngIf="isCardView">
+      <span>card-view</span>
+    </div>
+  </ng-template>
+</div>

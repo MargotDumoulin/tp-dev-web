@@ -1,0 +1,6 @@
+<h1 mat-dialog-title>Supprimer le film</h1>
+<div mat-dialog-content>Etes-vous sûrs de vouloir supprimer ce film ?</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="sendAnswer(true)" cdkFocusInitial>Oui</button>
+  <button mat-button (click)="sendAnswer(false)">Annuler</button>
+</div>
