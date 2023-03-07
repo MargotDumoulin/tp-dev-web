@@ -2,6 +2,7 @@
   <mat-spinner *ngIf="loading; else notLoading"></mat-spinner>
   <ng-template #notLoading>
     <div class="mat-headline-5">Musiques</div>
+    <button mat-button color="primary" (click)="openDialog()">Ajouter</button>
     <div class="switch-container">
       <div class="home-switch-view">
         <button

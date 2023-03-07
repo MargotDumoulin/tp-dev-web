@@ -30,21 +30,30 @@ export class HomeComponent {
     });
   }
 
-  openDialog(music: Music) {
+  openDialog(music?: Music) {
     this.dialog
       .open(FormulaireComponent, {
         data: {
-          musicModel: music,
+          musicModel: music || { styles: [], date: new Date() },
         },
       })
       .afterClosed()
-      .subscribe((musicEdited) => {
-        this.musicsService.update(musicEdited).subscribe({
-          next: (_res) => {
-            this.loading = true;
-            this.fetchMusics();
-          },
-        });
+      .subscribe((data) => {
+        if (music) {
+          this.musicsService.update(data).subscribe({
+            next: (_res) => {
+              this.loading = true;
+              this.fetchMusics();
+            },
+          });
+        } else {
+          this.musicsService.create(data).subscribe({
+            next: (_res) => {
+              this.loading = true;
+              this.fetchMusics();
+            },
+          });
+        }
       });
   }
 

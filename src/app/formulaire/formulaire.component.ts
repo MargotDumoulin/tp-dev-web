@@ -39,7 +39,6 @@ export class FormulaireComponent {
   }
 
   ngOnInit() {
-    console.log({ date: this.musicModel.date });
     this.form.patchValue({
       id: this.musicModel.id,
       title: this.musicModel.title,
@@ -68,7 +67,11 @@ export class FormulaireComponent {
   }
 
   submit(music: Music) {
-    this.dialogRef.close(music);
+    this.dialogRef.close({
+      ...music,
+      styles: this.musicModel.styles,
+      picture: this.musicModel.picture,
+    });
   }
 
   addChipset(event: MatChipInputEvent): void {
